@@ -5,6 +5,9 @@ using System.Text;
 namespace Chameleons
 {
     /// <summary>
+    /// 12/29/2015 - an exercise to help develop proficiency in C# and experience with 
+    /// Visual Studio 2015 Community Edition.  Windows 10 console mode application.
+    /// 
     /// The Chameleons - a researcher puts three types of chameleons on an island: 
     /// 10 brown, 14 gray and 15 black.  When two chameleons of differnt colors meet, they
     /// both change their colors to the third one.  Will it be possible for all the
@@ -13,9 +16,9 @@ namespace Chameleons
     /// _Algorithmic Puzzles_, Anany Levitin, Maria Levitin, Oxford Univ Press, 2011.
     /// 
     /// Plan:
-    ///     develop a brute force simimulation.
-    ///     once it is working, if it proves possible to get to all same color, 
-    ///     run it 10000 times and figure average number of meetings until all same color
+    ///     develop a brute force simimulation - 1000 meetings and either all same color or give up;
+    ///     once it is working, if it proves possible to get to all same color;
+    ///     run it 10000 times and figure average number of meetings until all same color.
     /// </summary>
     class Program
     {
@@ -88,10 +91,14 @@ namespace Chameleons
             Console.WriteLine("Results of simulations");
             Console.WriteLine("Number of simulations: {0}", nSimulations);
             Console.WriteLine("Number of simulations with no solution: {0}", nNoSolution);
-            Console.WriteLine("Average number of meetings to all chameleons are of the same color {0}\n", runCounts.Mean());
+            Console.WriteLine("Average number of meetings to all chameleons are of "
+                    + " the same color {0}\n", runCounts.Mean());
             Console.WriteLine("Final color Black: {0}", fnlColors[Chameleon.colors.Black]);
             Console.WriteLine("Final color Brown: {0}", fnlColors[Chameleon.colors.Brown]);
             Console.WriteLine("Final color Gray: {0}", fnlColors[Chameleon.colors.Gray]);
+            Console.WriteLine("Fewest number of meetings until all same color: {0}",runCounts.Lo());
+            Console.WriteLine("Greatest number of meetings until all same\ncolor "
+                    + " (if solution was found): {0}", runCounts.Hi());
 
             Console.WriteLine("Press any key to continue.");
             Console.ReadKey();
